@@ -2,7 +2,6 @@ package chess;
 
 import boardgame.Board;
 import boardgame.Piece;
-import chess.ChessPosition;
 import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
@@ -44,6 +43,9 @@ public class ChessMatch {
     private void validateSourcePosition(Position source) {
         if (!board.thereIsAPiece(source)){
             throw new ChessException("There is no piece on source position");
+        }
+        if (!board.piece(source).isThereAnyPossibleMove()){
+            throw new ChessException("There is no possible moves for the chosen piece");
         }
     }
 
